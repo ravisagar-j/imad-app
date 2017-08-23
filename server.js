@@ -9,12 +9,12 @@ var content = {
     title : 'Article one | Ravi',
     heading : 'Article one',
     date : 'aug 22 2017',
-    content : '  
+    content : ` 
          <p> This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article </p>
     
       <p> This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article </p>
      
-     <p> This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article </p> '
+     <p> This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article. This is my first article </p> `
 
 };
 
