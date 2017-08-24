@@ -99,13 +99,29 @@ app.get('/counter',function (req, res) {
      res.send(counter.toString());
 });
 
-app.get('/:articleName', function(req, res){
+var names = [];
+app.get('/submit-name', function(req, res) {
+    var name = req.query.name;
+    names.push(name);
+    res.send(JSON.stringfy(names));
+});
+
+app.get('/articles/:articleName', function(req, res){
     //articleName == article-one
     //articles[articleName] == {} content object for article one
-     var articleName = req.param.articleName;
-   res.send(createTemplate(articles[articleName]));
-     
-    
+    //var articleName = req.param.articleName;
+    pool.query("SELECT * FROM article WHERE title = " + rew.params.articleName, function (err, result) {
+        if (err) {
+        res.status(500).send(err.toString()); }
+        else {
+      if(result.rows.length === 0) {
+          res.status(404).send('Article no found');
+      } else {
+           var articleData = result.rows[0];
+           res.send(createTemplate(articleData));
+       }     
+      }
+    });
 });
 
 app.get('/article-two', function(req, res){
