@@ -119,7 +119,7 @@ app.post('/login', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
     
-   pool.query('SELECt * from "user" username = $1', [username], function (err, result) {
+   pool.query('SELECt * FROM "user" WHERE username = $1', [username], function (err, result) {
  if (err) {
      res.status(500).send(err.toString());
   }  else {
@@ -139,16 +139,6 @@ app.post('/login', function(req, res) {
 }
 });
 });
-
-   [username, dbString], function (err, result) {
-         if (err) {
-        res.status(500).send(err.toString());
-        } else {
-            res.send("USER successfully created! " + username);
-        }
- });
-}); 
-
 
 var Pool = new Pool(config);
 app.get('/test-db', function (reg, res) {
